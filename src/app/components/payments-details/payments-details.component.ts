@@ -41,7 +41,6 @@ export class PaymentsDetailsComponent implements OnInit {
 
 	ngOnInit() {
 		this.paymentDetails = {...this.payment.payload.val()};
-		// console.log(this.paymentDetails);
 		this.pid = this.payment.key;
 	}
 
