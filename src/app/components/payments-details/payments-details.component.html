@@ -1,0 +1,29 @@
+<div class="payment-detail-wrapper">
+	<div class="payment-detail payment-detail-c">
+		<h6><input type="text" [(ngModel)]="paymentDetails.name"></h6>
+		<div class="input-group">
+		<input type="text" [(ngModel)]="paymentDetails.url" placeholder="payment link">
+		<a class="input-group-addon" [href]="paymentDetails.url" target="_blank">Open &gt;&gt;</a>
+		</div>
+		<button class="text-danger">Delete</button>
+	</div>
+	<div class="payment-detail payment-detail-c">
+		<input type="number" [(ngModel)]="paymentDetails.cost">
+		<select name="freq" [ngModel]="paymentDetails.freq" (ngModelChange)="onFreqChange($event)">
+			<option *ngFor="let v of freqOptions" [value]="v">{{v}}</option>
+		</select>
+	</div>
+	<div class="payment-detail payment-detail-c">
+		Starting <input type="date" [(ngModel)]="paymentDetails.startDate">
+		Next is: 12/12/12
+		(11 days from now)
+	</div>
+</div>
+<div style="font-size: x-small;">
+	Testing:
+	Name: {{paymentDetails.name}}
+	Cost: {{paymentDetails.cost}}
+	Freq: {{paymentDetails.freq}}
+	Start: {{paymentDetails.startDate}}
+	Key: {{pid}}
+</div>

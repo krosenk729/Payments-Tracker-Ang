@@ -1,0 +1,42 @@
+<div class="form-wrapper">
+	<form [formGroup]="pForm" (ngSubmit)="onFormSubmit()" autocomplete="off" novalidate>
+		<div class="form-group">
+			<label class="control-label" for="name">Name</label>  
+			<input type="text" placeholder="Store Membership or Bill" formControlName="name" #name id="new-name" class="form-control"> 
+			<small *ngIf="pForm.controls['name'].invalid && (pForm.controls['name'].touched || pForm.controls['name'].dirty)" class="text-danger">Payment name is required</small> 
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="url">Website</label>  
+			<input name="url" type="text" placeholder="http://amazon.com" formControlName="url" id="new-url" class="form-control">  
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="cost">Cost</label>  
+			<input type="number" formControlName="cost" #cost id="new-cost" class="form-control">  
+			<small *ngIf="pForm.controls['cost'].invalid && (pForm.controls['cost'].touched || pForm.controls['cost'].dirty)" class="text-danger">$0 would be a good deal, but not worth tracking - Enter a valid value please</small>  
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="freq">Frequency</label>
+			<select id="freq" formControlName="freq" class="form-control">
+				<option value="Daily">Daily</option>
+				<option value="Weekly">Weekly</option>
+				<option value="Monthly" selected>Monthly</option>
+				<option value="Yearly">Yearly</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label class="control-label" for="startdate">Next Payment</label>  
+			<input type="date" formControlName="startDate" id="startdate" class="form-control" #freq>  
+		</div>
+		<div class="form-group" *ngIf="pForm.value.freq === 'Daily'">
+			<input type="number" min="1" max="12" formControlName="startTime" id="starttime" class="form-control" value="11">
+			<select formControlName="ampm" id="ampm" class="form-control">
+				<option value="AM" selected>AM</option>
+				<option value="PM">PM</option>
+			</select> 
+			<small *ngIf="pForm.controls['startTime'].invalid && (pForm.controls['startTime'].touched || pForm.controls['startTime'].dirty)" class="text-danger">Hour must be between 1 and 12</small>  
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn">Submit</button>
+		</div>
+	</form>
+</div>

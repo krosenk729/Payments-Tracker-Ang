@@ -1,0 +1,8 @@
+.payment-detail-wrapper{
+	display: flex;
+	justify-content: space-between;
+}
+.payment-detail{
+	display: flex;
+	flex-direction: column;
+}
