@@ -10,6 +10,6 @@
 	</div>
 	<div class="new-payments-wrapper">
 		<h1>Add a Payment</h1>
-		<app-payments-form (pFormSubmit)="addToFirebase($event)"></app-payments-form>
+		<app-payments-form [uid]="uid"></app-payments-form>
 	</div>
 </div>

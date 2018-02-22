@@ -22,14 +22,4 @@ export class PaymentsComponent implements OnInit {
 		this.payments$ = this.firebase.subscribePayment(this.uid);
 	}
 
-	addToFirebase(p){
-		// console.log('parentvalue', val);
-		this.firebase.sendPayment(p, this.uid);
-	}
-
-	removeFromFirebase(pid){
-		// console.log('parentvalue', val);
-		this.firebase.delPayment(pid);
-	}
-
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FirebaseService } from '../../providers/firebase.service';
 
 @Component({
 	selector: 'app-payments-form',
@@ -7,10 +8,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 	styleUrls: ['./payments-form.component.css']
 })
 export class PaymentsFormComponent implements OnInit {
-	@Output() pFormSubmit = new EventEmitter();
+	@Input() uid;
 	pForm: FormGroup;
 
-	constructor(private fb: FormBuilder) {
+	constructor(private fb: FormBuilder, private firebase: FirebaseService) {
 		this.createForm();
 	}
 
@@ -29,7 +30,7 @@ export class PaymentsFormComponent implements OnInit {
 	onFormSubmit(){
 		// console.log('submit clicked for form ', this.pForm.value);
 		if(this.pForm.invalid){ return ; }
-		this.pFormSubmit.emit(this.pForm.value);
+		this.firebase.sendPayment(this.pForm.value, this.uid);
 		this.pForm.reset();
 	}
 

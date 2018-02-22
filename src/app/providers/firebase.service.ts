@@ -20,7 +20,6 @@ export class FirebaseService {
 		} else {
 			this.paymentRef.update(pid, {...p, uid});
 		}
-		// console.log('sent?');
 	}
 
 	delPayment(pid){
