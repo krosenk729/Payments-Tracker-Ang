@@ -5,6 +5,9 @@
     <li class="nav-item"><a routerLink="./dashboard">Dashboard</a></li>
   </ul>
   <p>the id is {{uid}}</p>
+  <p>Display: {{(user | async)?.displayName}}</p>
+  <img [src]="(user | async)?.photoURL">
+  <!-- <p>Display: {{user | async | json}}</p> -->
   <a routerLink="login" (click)="logout()">Log Out</a>
 </nav>
 <router-outlet></router-outlet>
