@@ -11,6 +11,7 @@
 + Firebase Documents https://github.com/angular/angularfire2/blob/HEAD/docs/rtdb/lists.md
 + Firebase Service https://github.com/angular-university/angular-firebase-app/blob/0c276a9839a8e5abef4aea0dc42bcddfaea70de5/src/app/shared/model/lessons.service.ts
 + RegExp for URLs https://regex.wtf/url-matching-regex-javascript/
++ ngBootstrap
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 

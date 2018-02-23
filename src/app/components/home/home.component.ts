@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../providers/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 	uid: any;
-	constructor(private route: ActivatedRoute, private router: Router) { }
+	constructor(public auth: AuthService ,private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(params =>{
