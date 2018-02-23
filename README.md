@@ -10,6 +10,7 @@
 + Firebase Documents https://github.com/codediodeio/angular-firestarter/ 
 + Firebase Documents https://github.com/angular/angularfire2/blob/HEAD/docs/rtdb/lists.md
 + Firebase Service https://github.com/angular-university/angular-firebase-app/blob/0c276a9839a8e5abef4aea0dc42bcddfaea70de5/src/app/shared/model/lessons.service.ts
++ Firebase Auth https://www.dunebook.com/how-to-set-up-authentication-in-angular-5-with-firebase-firestore/
 + RegExp for URLs https://regex.wtf/url-matching-regex-javascript/
 + ngBootstrap
 

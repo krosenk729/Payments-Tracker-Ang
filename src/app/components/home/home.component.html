@@ -5,6 +5,6 @@
     <li class="nav-item"><a routerLink="./dashboard">Dashboard</a></li>
   </ul>
   <p>the id is {{uid}}</p>
-  <a routerLink="login">Log Out</a>
+  <a routerLink="login" (click)="logout()">Log Out</a>
 </nav>
 <router-outlet></router-outlet>

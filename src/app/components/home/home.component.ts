@@ -9,12 +9,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 	uid: any;
-	constructor(public auth: AuthService ,private route: ActivatedRoute, private router: Router) { }
+	constructor(public auth: AuthService, private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(params =>{
 			this.uid = params['id'];
 		});
+	}
+
+	logout(){
+		this.auth.logout();
 	}
 
 }

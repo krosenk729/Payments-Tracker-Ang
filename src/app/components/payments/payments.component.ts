@@ -1,5 +1,6 @@
+import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FirebaseService } from '../../providers/firebase.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 	styleUrls: ['./payments.component.css']
 })
 export class PaymentsComponent implements OnInit {
-	private uid: any;
+	uid: any;
 	payments$: Observable<any[]>;
 
 	constructor(private route: ActivatedRoute, private firebase: FirebaseService) { }
@@ -17,9 +18,8 @@ export class PaymentsComponent implements OnInit {
 	ngOnInit() {
 		this.route.parent.params.subscribe(params =>{
 			this.uid = params['id'];
+			this.payments$ = this.firebase.subscribePayment(params['id']);
 		});
-
-		this.payments$ = this.firebase.subscribePayment(this.uid);
 	}
 
 }
