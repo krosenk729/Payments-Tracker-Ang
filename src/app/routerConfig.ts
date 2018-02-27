@@ -12,6 +12,28 @@ const appRoutes: Routes = [
 		component: LoginComponent
 	},
 	{
+		path: 'home',
+		component: HomeComponent,
+		children: [
+			{
+				path: 'payments',
+				component: PaymentsComponent
+			},
+			{
+				path: 'settings',
+				component: SettingsComponent
+			},
+			{
+				path: 'dashboard',
+				component: DashboardComponent
+			},
+			{
+				path: '**',
+				redirectTo: 'payments'
+			}
+		]
+	},
+	{
 		path: 'home/:id',
 		component: HomeComponent,
 		children: [

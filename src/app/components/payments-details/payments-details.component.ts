@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FirebaseService } from '../../providers/firebase.service';
+import { AuthService } from '../../providers/auth.service';
 
 @Component({
 	selector: 'app-payments-details',
 	templateUrl: './payments-details.component.html',
-	styleUrls: ['./payments-details.component.css']
+	styleUrls: ['./payments-details.component.css']	
 })
 export class PaymentsDetailsComponent implements OnInit {
 	@Input() payment;
 	paymentDetails: any;
 	pid: any;
 	freqOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
-	constructor(private firebase: FirebaseService) { }
+	constructor(private firebase: AuthService) { }
 
 	onFreqChange(newVal){
 		console.log('new val', newVal);

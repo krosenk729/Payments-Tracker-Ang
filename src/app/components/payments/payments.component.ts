@@ -25,7 +25,7 @@ export class PaymentsComponent implements OnInit {
 	ngOnInit() {
 		this.route.parent.params.subscribe(params =>{
 			this.uid = params['id'];
-			this.payments$ = this.firebase.subscribePayment(params['id']);
+			// this.payments$ = this.firebase.subscribePayment(params['id']);
 			this.payments$ = this.auth.subscribePayments();
 		});
 	}

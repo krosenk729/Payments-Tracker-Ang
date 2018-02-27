@@ -13,8 +13,12 @@ export class AuthService {
 	constructor(public afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase ) {
 		this.paymentRef = db.list('payments');
 		this.afAuth.auth.onAuthStateChanged(user => {
-			this.user = user;
-			console.log( 'curr user', this.afAuth.auth.currentUser );
+			if(user){
+				this.user = user;
+				console.log( 'curr user', this.afAuth.auth.currentUser );	
+			} else {
+				this.user = {};
+			}
 		});
 	}
 
