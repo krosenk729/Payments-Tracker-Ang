@@ -11,15 +11,17 @@ import { Observable } from 'rxjs/Observable';
 export class HomeComponent implements OnInit {
 	uid: any;
 	user: any;
-	constructor(public auth: AuthService, private route: ActivatedRoute, private router: Router) { }
+	constructor(
+		public auth: AuthService, 
+		private route: ActivatedRoute, 
+		private router: Router
+		) { }
 
 	ngOnInit() {
 		this.route.params.subscribe(params =>{
 			this.uid = params['id'];
 		});
-
 		this.user = this.auth.getUser();
-		console.log('k is... ', this.user);
 	}
 
 	logout(){
