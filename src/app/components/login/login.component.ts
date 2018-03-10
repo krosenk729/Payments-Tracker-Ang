@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../providers/auth.service';
+import { FirebaseService } from '../../providers/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,12 +9,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-	constructor(public auth: AuthService, private route: ActivatedRoute, private router: Router) { }
+	constructor(public firebase: FirebaseService, private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit() {
 	}
 
 	loginWithGoogle(){
-		this.auth.loginWithGoogle();
+		this.firebase.loginWithGoogle();
 	}
 }

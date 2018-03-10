@@ -22,8 +22,12 @@ import { SettingsComponent } from './components/settings/settings.component';
 
 /* App Services */
 import { FirebaseService } from './providers/firebase.service';
-import { AuthService } from './providers/auth.service';
 
+/* External Libraries */
+import * as Moment from 'moment';
+
+
+/* Routes */
 import appRoutes from './routerConfig';
 
 @NgModule({
@@ -39,7 +43,7 @@ import appRoutes from './routerConfig';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    appRoutes,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -48,8 +52,7 @@ import appRoutes from './routerConfig';
     AngularFireAuthModule
   ],
   providers: [
-    FirebaseService, 
-    AuthService
+    FirebaseService
   ],
   bootstrap: [AppComponent]
 })

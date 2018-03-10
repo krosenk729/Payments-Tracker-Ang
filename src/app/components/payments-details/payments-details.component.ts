@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../../providers/auth.service';
+import { FirebaseService } from '../../providers/firebase.service';
+import * as Moment from 'moment';
+
 
 @Component({
 	selector: 'app-payments-details',
@@ -11,7 +13,7 @@ export class PaymentsDetailsComponent implements OnInit {
 	paymentDetails: any;
 	pid: any;
 	freqOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
-	constructor(private firebase: AuthService) { }
+	constructor(private firebase: FirebaseService) { }
 
 	onFreqChange(newVal){
 		console.log('new val', newVal);
@@ -36,7 +38,7 @@ export class PaymentsDetailsComponent implements OnInit {
 	}
 
 	calcNextPayment(){
-		return 'hello world';
+		return Moment().format();
 	}
 
 	ngOnInit() {

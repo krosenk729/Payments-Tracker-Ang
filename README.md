@@ -1,7 +1,7 @@
 # PaymentTrackerApp
 
 ### Useful links
-+ https://appdividend.com/2018/01/21/angular-5-crud-tutorial-example-scratch/#Step_14_Edit_and_Delete_the_Coins
++ Angular CRUD https://appdividend.com/2018/01/21/angular-5-crud-tutorial-example-scratch/
 + Routing https://github.com/bennadel/JavaScript-Demos/tree/master/demos/router-wildcard-paths2-angular5/
 + Forms https://www.concretepage.com/angular-2/angular-2-4-pattern-validation-example
 + Routing Parent Param https://stackoverflow.com/a/37973553/6322587
@@ -12,7 +12,9 @@
 + Firebase Service https://github.com/angular-university/angular-firebase-app/blob/0c276a9839a8e5abef4aea0dc42bcddfaea70de5/src/app/shared/model/lessons.service.ts
 + Firebase Auth https://www.dunebook.com/how-to-set-up-authentication-in-angular-5-with-firebase-firestore/
 + RegExp for URLs https://regex.wtf/url-matching-regex-javascript/
-+ ngBootstrap
++ ngBootstrap https://medium.com/codingthesmartway-com-blog/building-an-angular-5-project-with-bootstrap-4-and-firebase-4504ff7717c1 
++ ngBootstrap https://ng-bootstrap.github.io/#/components/datepicker/examples
++ Moment https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 

@@ -1,17 +1,48 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
+import { Observable } from "rxjs/Rx";
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from "angularfire2/auth";
+import * as firebase from 'firebase/app';
+
 
 @Injectable()
 export class FirebaseService {
+	user: any; 
 	paymentRef: AngularFireList<any>;
-	
-	constructor(private db: AngularFireDatabase) {
+	constructor(public afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase ) {
 		this.paymentRef = db.list('payments');
+		this.afAuth.auth.onAuthStateChanged(user => {
+			if(user){
+				this.user = user;
+				console.log( 'curr user', this.afAuth.auth.currentUser );	
+			} else {
+				this.user = {};
+			}
+		});
 	}
 
-	subscribePayment(uid): Observable<any[]>{
-		return this.db.list('payments', r => r.orderByChild('uid').equalTo(uid)).snapshotChanges();
+	loginWithGoogle(){
+		const provider = new firebase.auth.GoogleAuthProvider();
+		return this.afAuth.auth.signInWithPopup( provider )
+		.then(user => {
+			this.user = user.user;
+			this.router.navigate(['home', user.user.uid]);
+		})
+		.catch(err =>{
+			console.log('Error :( ', err);
+		});
+	}
+
+	getUser(){
+		return this.afAuth.authState;
+	}
+
+	subscribePayments(){
+		if(!this.user.uid){
+			return ;
+		}
+		return this.db.list('payments', r => r.orderByChild('uid').equalTo(this.user.uid)).snapshotChanges();
 	}
 
 	sendPayment(p, uid, pid = ''){
@@ -27,17 +58,12 @@ export class FirebaseService {
 		console.log('deleted?');
 	}
 
-	getTestPayment(uid){
-		return [{
-					name: 'Katherine Test',
-					url: '',
-					cost: 500,
-					freq: 'Monthly',
-					startDate: '2019-01-01',
-					startTime: 11,
-					ampm: 'AM',
-					uid: 'testuserid'
-				}];
+	logout(){
+		return this.afAuth.auth.signOut()
+		.then(() =>{
+			this.router.navigate(['/']);
+		});
 	}
-
+// https://angularfirebase.com/lessons/google-user-auth-with-firestore-custom-data/
+// https://github.com/angular-university/angular-firebase-app/blob/master/src/app/shared/security/auth.service.ts
 }

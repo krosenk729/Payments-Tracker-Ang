@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../providers/auth.service';
+import { FirebaseService } from '../../providers/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 	uid: any;
 	user: any;
 	constructor(
-		public auth: AuthService, 
+		public firebase: FirebaseService, 
 		private route: ActivatedRoute, 
 		private router: Router
 		) { }
@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
 		this.route.params.subscribe(params =>{
 			this.uid = params['id'];
 		});
-		this.user = this.auth.getUser();
+		this.user = this.firebase.getUser();
 	}
 
 	logout(){
-		this.auth.logout();
+		this.firebase.logout();
 	}
 
 }
