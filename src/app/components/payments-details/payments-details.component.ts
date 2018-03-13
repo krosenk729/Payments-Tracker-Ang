@@ -24,7 +24,7 @@ export class PaymentsDetailsComponent implements OnInit {
 	onPaymentChange(event, type){
 		console.log('key/val change', event, type);
 		console.log( {[type]: event} );
-		this.firebase.sendPayment({[type]: event}, this.paymentDetails.uid, this.pid);
+		this.firebase.sendPayment({[type]: event}, this.pid);
 	}
 
 	onPaymentDelete(){

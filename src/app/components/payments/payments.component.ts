@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FirebaseService } from '../../providers/firebase.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Component({
 	selector: 'app-payments',
@@ -16,11 +17,12 @@ export class PaymentsComponent implements OnInit {
 		private route: ActivatedRoute, 
 		private firebase: FirebaseService
 		) {
+			console.log('construct', this.firebase.getUser());
 			// console.log( 'constructor uid', this.firebase.getUserId() );
 			// this.payments$ = this.firebase.subscribePayments();
 		}
 
-	ngOnInit() {
+	ngOnInit(){
 		this.route.parent.params.subscribe(params =>{
 			this.uid = params['id'];
 			// this.payments$ = this.firebase.subscribePayment(params['id']);

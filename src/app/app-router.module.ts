@@ -1,10 +1,15 @@
+import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
+/* Modules */
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
+
+/* Route Guard */
+import { RouteGuard } from './app-guard.service';
 
 const appRoutes: Routes = [
 	{
@@ -14,6 +19,7 @@ const appRoutes: Routes = [
 	{
 		path: 'home',
 		component: HomeComponent,
+		canActivate: [RouteGuard],
 		children: [
 			{
 				path: 'payments',
@@ -39,7 +45,16 @@ const appRoutes: Routes = [
 	}
 ];
 
-// export default appRoutes;
-// https://www.c-sharpcorner.com/article/routing-in-angular-4/
-// https://stackoverflow.com/questions/43113429/angular-cli-error-in-cannot-read-property-loadchildren-of-null/48205304#48205304
-export default RouterModule.forRoot(appRoutes);
+@NgModule({
+	imports: [
+		RouterModule.forRoot(appRoutes)
+	],
+	exports: [
+		RouterModule
+	],
+	providers: [
+		RouteGuard
+	]
+})
+
+export class AppRoutingModule {}

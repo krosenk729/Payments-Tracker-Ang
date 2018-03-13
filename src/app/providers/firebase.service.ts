@@ -4,17 +4,19 @@ import { Observable } from "rxjs/Rx";
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase/app';
-
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FirebaseService {
 	user: any; 
 	paymentRef: AngularFireList<any>;
+	curPayments: Observable<any>;
 	constructor(public afAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase ) {
-		this.paymentRef = db.list('payments');
+		this.paymentRef = this.db.list('payments');
 		this.afAuth.auth.onAuthStateChanged(user => {
 			if(user){
 				this.user = user;
+				this.curPayments = this.subscribePayments();
 				console.log( 'curr user', this.afAuth.auth.currentUser );	
 			} else {
 				this.user = {};
@@ -39,17 +41,18 @@ export class FirebaseService {
 	}
 
 	subscribePayments(){
-		if(!this.user.uid){
+		if(!this.user || !this.user.uid){
 			return ;
 		}
 		return this.db.list('payments', r => r.orderByChild('uid').equalTo(this.user.uid)).snapshotChanges();
 	}
 
-	sendPayment(p, uid, pid = ''){
+	sendPayment(p, pid = ''){
 		if(!pid){
-			this.paymentRef.push({...p, uid});
+			this.paymentRef.push({...p, uid: this.user.uid});
 		} else {
-			this.paymentRef.update(pid, {...p, uid});
+			console.log('user', this.user);
+			this.paymentRef.update(pid, {...p, uid: this.user.uid});
 		}
 	}
 

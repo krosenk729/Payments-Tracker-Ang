@@ -10,6 +10,22 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
+/* FusionCharts */
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
+
+/* App Services */
+import { FirebaseService } from './providers/firebase.service';
+
+/* External Libraries */
+import * as Moment from 'moment';
+
+/* Routes */
+import { AppRoutingModule } from './app-router.module';
+
 /* App Components */
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,16 +35,7 @@ import { PaymentsFormComponent } from './components/payments-form/payments-form.
 import { PaymentsDetailsComponent } from './components/payments-details/payments-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
-
-/* App Services */
-import { FirebaseService } from './providers/firebase.service';
-
-/* External Libraries */
-import * as Moment from 'moment';
-
-
-/* Routes */
-import appRoutes from './routerConfig';
+import { DashboardYearChartComponent } from './components/dashboard-year-chart/dashboard-year-chart.component';
 
 @NgModule({
   declarations: [
@@ -39,17 +46,19 @@ import appRoutes from './routerConfig';
     SettingsComponent,
     LoginComponent,
     PaymentsFormComponent,
-    PaymentsDetailsComponent
+    PaymentsDetailsComponent,
+    DashboardYearChartComponent
   ],
   imports: [
     BrowserModule,
-    appRoutes,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FusionChartsModule,
+    AppRoutingModule
   ],
   providers: [
     FirebaseService
