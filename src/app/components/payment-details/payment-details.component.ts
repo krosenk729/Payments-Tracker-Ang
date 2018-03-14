@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MyFireService } from '../../providers/myfire.service';
 // import * as Moment from 'moment';
-// import { MyFireService } from '../../providers/myfire.service';
 
 @Component({
 	selector: 'app-payment-details',
@@ -8,11 +8,31 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PaymentDetailsComponent implements OnInit {
 	@Input() payment;
-	// paymentDetails: object = {};
+	pid: string = null;
+	paymentDetails: object = {};
+	freqOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
 
-	constructor() { }
+	constructor(private myFire: MyFireService) { }
 
 	ngOnInit() {
+		this.pid = this.payment.key;
+		this.paymentDetails = this.payment.payment;
 		console.log(this.payment);
+	}
+
+	onFreqChange(newVal){
+	}
+
+	onPaymentChange(event, type){
+
+	}
+	
+	onPaymentDelete(){
+
+	}
+
+	testUrl(str = '0'){
+		let regxp = new RegExp('^(http(s)?(:\/\/))?(www\.)?[a-zA-Z0-9-_\.]+(\.[a-zA-Z0-9]{2,})([-a-zA-Z0-9:%_\+.~#?&//=]*)');
+		return str.match(regxp);
 	}
 }

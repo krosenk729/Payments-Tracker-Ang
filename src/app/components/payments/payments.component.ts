@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MyFireService } from '../../providers/myfire.service';
-import { Observable } from "rxjs/Rx";
 import * as firebase from 'firebase';
 
 @Component({
@@ -22,7 +21,6 @@ export class PaymentsComponent implements OnInit, OnDestroy {
 				key: payment.key,
 				payment: payment.val()
 			});
-			console.log(this.paymentList);
 		});
 	}
 

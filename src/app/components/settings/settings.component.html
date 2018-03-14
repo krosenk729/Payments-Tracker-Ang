@@ -1,3 +1,8 @@
-<p>
-  settings works!
-</p>
+<div class="container">
+	<h1>Settings</h1>
+	<ul class="list-group">
+		<li *ngFor="let payment of paymentList" class="list-group-item">
+			{{payment.payment.name}}
+		</li> 
+	</ul>
+</div>
