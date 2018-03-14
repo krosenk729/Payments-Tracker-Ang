@@ -1,0 +1,12 @@
+<nav class="navbar">
+	<div class="nav align-items-baseline" *ngIf="isLoggedIn">
+		<a class="nav-link" routerLinkActive="active" routerLink="payments">Payments</a>
+		<a class="nav-link" routerLinkActive="active" routerLink="settings">Settings</a>
+		<a class="nav-link" routerLinkActive="active" routerLink="dashboard">Dashboard</a>
+	</div>
+	<div class="nav align-items-baseline">
+		<p class="nav-brand">{{name}} | {{email}}</p>
+		<a class="nav-link" routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="login">Log In</a>
+		<a class="nav-link" routerLinkActive="active" *ngIf="isLoggedIn" (click)="onLogout()" href="#">Log Out</a>
+	</div>
+</nav>
