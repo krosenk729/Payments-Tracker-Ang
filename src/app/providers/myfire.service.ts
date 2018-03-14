@@ -13,7 +13,8 @@ export class MyFireService {
 	}
 
 	getUserPaymentRef(uid){
-		return firebase.database().ref('payments').child(uid);
+		// return firebase.database().ref('payments').child(uid);
+		return firebase.database().ref('payments').orderByChild('uid').equalTo(uid);
 	}
 
 	handleNewPayment(paymentData){

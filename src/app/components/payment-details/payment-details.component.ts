@@ -8,12 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PaymentDetailsComponent implements OnInit {
 	@Input() payment;
-	paymentDetails: object = {};
+	// paymentDetails: object = {};
 
 	constructor() { }
 
 	ngOnInit() {
 		console.log(this.payment);
 	}
-
 }
