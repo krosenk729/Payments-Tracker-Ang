@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.uid = firebase.auth().currentUser.uid;
+		console.log('firebase auth...', firebase.auth().currentUser);
 		this.paymentsRef = firebase.database().ref('payments').child(this.uid);
 		this.paymentsRef.on('child_added', data => {
 			console.log('data ... ', data);

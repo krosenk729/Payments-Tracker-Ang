@@ -15,9 +15,9 @@ export class PaymentsComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute, 
-		private firebase: FirebaseService
+		private fb: FirebaseService
 		) {
-			console.log('construct', this.firebase.getUser());
+			console.log('construct', this.fb.getUser());
 			// console.log( 'constructor uid', this.firebase.getUserId() );
 			// this.payments$ = this.firebase.subscribePayments();
 		}
@@ -26,7 +26,7 @@ export class PaymentsComponent implements OnInit {
 		this.route.parent.params.subscribe(params =>{
 			this.uid = params['id'];
 			// this.payments$ = this.firebase.subscribePayment(params['id']);
-			this.payments$ = this.firebase.subscribePayments();
+			this.payments$ = this.fb.subscribePayments();
 		});
 	}
 

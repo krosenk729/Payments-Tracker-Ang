@@ -9,7 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
 /* Route Guard */
-import { RouteGuard } from './app-guard.service';
+import { RouteGuard } from './providers/app-guard.service';
 
 const appRoutes: Routes = [
 	{
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
 	{
 		path: 'home',
 		component: HomeComponent,
-		canActivate: [RouteGuard],
+		canLoad: [RouteGuard],
 		children: [
 			{
 				path: 'payments',

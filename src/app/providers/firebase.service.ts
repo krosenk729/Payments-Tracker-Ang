@@ -17,7 +17,7 @@ export class FirebaseService {
 			if(user){
 				this.user = user;
 				this.curPayments = this.subscribePayments();
-				console.log( 'curr user', this.afAuth.auth.currentUser );	
+				// console.log( 'curr user', this.afAuth.auth.currentUser );	
 			} else {
 				this.user = {};
 			}
