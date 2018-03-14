@@ -5,8 +5,8 @@
 		<a class="nav-link" routerLinkActive="active" routerLink="dashboard">Dashboard</a>
 	</div>
 	<div class="nav align-items-baseline">
-		<p class="nav-brand">{{name}} | {{email}}</p>
+		<p class="nav-brand" *ngIf="isLoggedIn">{{displayName}} | {{email}}</p>
 		<a class="nav-link" routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="login">Log In</a>
-		<a class="nav-link" routerLinkActive="active" *ngIf="isLoggedIn" (click)="onLogout()" href="#">Log Out</a>
+		<a class="nav-link" routerLinkActive="active" *ngIf="isLoggedIn" (click)="onLogout()" routerLink="login">Log Out</a>
 	</div>
 </nav>

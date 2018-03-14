@@ -10,9 +10,9 @@ import * as firebase from 'firebase';
 export class NavigationComponent implements OnInit {
 	isLoggedIn: boolean = false;
 	uid: string;
-	name: string;
+	displayName: string;
 	email: string;
-	avatar: string;
+	photoURL: string;
 
 	constructor(
 		private auth: AuthService,
@@ -23,33 +23,30 @@ export class NavigationComponent implements OnInit {
 		this.auth.statusChange.subscribe(user => {
 			if(user){
 				this.uid = user.uid;
-				this.name = user.name;
+				this.displayName = user.displayName;
 				this.email = user.email;
-				this.avatar = user.avatar;
+				this.photoURL = user.photoURL;
 			} else {
 				this.uid = null;
-				this.name = null;
+				this.displayName = null;
 				this.email = null;
-				this.avatar = null;
+				this.photoURL = null;
 			}
 		});
 
 		firebase.auth().onAuthStateChanged(user =>{
 			if(user){
 				this.isLoggedIn = true;
-				const user = this.auth.getUser();
-				if(user){
-					this.uid = user.uid;
-					this.name = user.name;
-					this.email = user.email;
-					this.avatar = user.avatar;
-				}
+				this.uid = user.uid;
+				this.displayName = user.displayName;
+				this.email = user.email;
+				this.photoURL = user.photoURL;
 				this.router.navigate(['/payments']);
 			} else {
 				this.isLoggedIn = false;
 				this.router.navigate(['/login']);
 			}
-		})
+		});
 	}
 
 	onLogout(){
