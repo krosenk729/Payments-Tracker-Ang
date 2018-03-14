@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
+import { Observable } from "rxjs/Rx";
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 @Injectable()
 export class MyFireService {
 
-	constructor(private authService: AuthService) { }
+	constructor(private authService: AuthService, private fireDB: AngularFireDatabase) { }
 
 	getUser(uid){
 		const ref = firebase.database().ref('users/' + uid);
@@ -14,6 +16,10 @@ export class MyFireService {
 
 	getUserPaymentRef(uid){
 		return firebase.database().ref('payments').child(uid);
+	}
+
+	subscribePayments(uid){
+		return this.fireDB.list('payments/' + uid).snapshotChanges();
 	}
 
 	handleNewPayment(paymentData){

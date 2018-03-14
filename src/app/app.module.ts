@@ -12,6 +12,8 @@ import { AuthGuard } from './providers/auth-guard.service';
 
 /* Firebase Env */
 import { environment } from './../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // /* FusionCharts */
 // import * as FusionCharts from 'fusioncharts';
@@ -51,7 +53,9 @@ import { NavigationComponent } from './components/common/navigation.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     AuthGuard,
