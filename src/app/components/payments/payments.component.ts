@@ -10,21 +10,20 @@ import * as firebase from 'firebase';
 export class PaymentsComponent implements OnInit, OnDestroy {
 	paymentsRef: any;
 	paymentList: any = [];
-	payments$: Observable<any>;
 
   constructor(private myFire: MyFireService) { }
 
   ngOnInit() {
 	const uid = firebase.auth().currentUser.uid;
 	this.paymentsRef = this.myFire.getUserPaymentRef(uid);
-	this.paymentsRef.on('child_added', payment =>{
-		this.paymentList.push({
-			key: payment.key,
-			payment: payment.val()
-		});
-		console.log(this.paymentList);
-	});
-	this.payments$ = this.myFire.subscribePayments(uid);
+	console.log(uid);
+	// this.paymentsRef.on('child_added', payment =>{
+	// 	this.paymentList.push({
+	// 		key: payment.key,
+	// 		payment: payment.val()
+	// 	});
+	// 	console.log(this.paymentList);
+	// });
   }
 
   ngOnDestroy(){

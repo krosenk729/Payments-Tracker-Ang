@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Providers */
@@ -12,8 +13,6 @@ import { AuthGuard } from './providers/auth-guard.service';
 
 /* Firebase Env */
 import { environment } from './../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // /* FusionCharts */
 // import * as FusionCharts from 'fusioncharts';
@@ -51,11 +50,10 @@ import { NavigationComponent } from './components/common/navigation.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    AngularFireModule,
-    AngularFireDatabaseModule
+    AppRoutingModule
   ],
   providers: [
     AuthGuard,
