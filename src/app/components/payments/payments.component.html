@@ -3,7 +3,7 @@
 		<h1>Payments</h1>
 		<ul class="list-group">
 			<li *ngFor="let payment of payments$ | async" class="list-group-item">
-				<app-payments-details [payment]="payment"></app-payments-details>
+				<app-payment-details [payment]="payment"></app-payment-details>
 			</li> 
 		</ul>
 	</div>
