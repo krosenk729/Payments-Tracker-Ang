@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MyFireService } from '../../providers/myfire.service';
+import * as firebase from 'firebase';
 
 @Component({
 	selector: 'app-payment-new',
@@ -7,7 +9,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class PaymentNewComponent implements OnInit {
 	newPaymentForm: FormGroup;
-	constructor(private formBuilder: FormBuilder) { }
+	constructor(private formBuilder: FormBuilder, private myFire: MyFireService) { }
 
 	createForm() {
 		this.newPaymentForm = this.formBuilder.group({
@@ -20,6 +22,10 @@ export class PaymentNewComponent implements OnInit {
 	}
 
 	onFormSubmit(){
+		if(!this.newPaymentForm.errors){
+			this.myFire.handleNewPayment( this.newPaymentForm.value );
+			this.newPaymentForm.reset();
+		}
 		console.log( this.newPaymentForm );
 	}
 
