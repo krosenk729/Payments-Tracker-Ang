@@ -10,7 +10,7 @@ import * as Moment from 'moment';
 })
 export class PaymentNewComponent implements OnInit {
 	newPaymentForm: FormGroup;
-	paymentsRef: any;
+
 	constructor(private formBuilder: FormBuilder, private myFire: MyFireService) { }
 
 	setForm() {
@@ -27,12 +27,9 @@ export class PaymentNewComponent implements OnInit {
 		if(this.newPaymentForm.status === "VALID"){
 			const uid = firebase.auth().currentUser.uid;
 			const paymentsRef = this.myFire.getUserPaymentRef(uid);
-			console.log(uid);
-			// this.paymentsRef()
 			this.myFire.handleNewPayment( this.newPaymentForm.value, uid );
 			this.setForm();
 		}
-		console.log( this.newPaymentForm );
 	}
 
 	ngOnInit() {
