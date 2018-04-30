@@ -21,14 +21,14 @@ export class MyFireService {
 		console.log('provider', uid);
 		const newPaymentKey = firebase.database().ref('payments').push().key;
 		const updates = {};
-		updates['/payments/' + newPaymentKey] = {...paymentData, uid};
+		updates['/payments/' + newPaymentKey] = {...paymentData, uid, updateDate: new Date()};
 		return firebase.database().ref().update(updates);
 	}
 
 	handlePaymentChange(pid, key, val){
 		const user = this.authService.getUser();
 		const updateRef = '/payments/' + pid;
-		return firebase.database().ref(updateRef).update({key: val});
+		return firebase.database().ref(updateRef).update({key: val, updateDate: new Date()});
 	}
 
 	handlePaymentDelete(pid){
