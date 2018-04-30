@@ -17,12 +17,12 @@ export class PaymentDetailsComponent implements OnInit {
 	ngOnInit() {
 		this.pid = this.payment.key;
 		this.paymentDetails = this.payment.payment;
-		// console.log(this.payment);
 	}
 
 	onFreqChange(newVal){
 		console.log(newVal);
 		console.log(this.pid);
+		this.myFire.handlePaymentChange(this.pid, 'freq', newVal);
 	}
 
 	onPaymentChange(event, type){
