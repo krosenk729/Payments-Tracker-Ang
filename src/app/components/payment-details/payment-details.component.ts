@@ -20,13 +20,11 @@ export class PaymentDetailsComponent implements OnInit {
 	}
 
 	onFreqChange(newVal){
-		console.log(newVal);
-		console.log(this.pid);
 		this.myFire.handlePaymentChange(this.pid, 'freq', newVal);
 	}
 
-	onPaymentChange(event, type){
-		console.log(event, type);
+	onPaymentChange(newVal, key){
+		this.myFire.handlePaymentChange(this.pid, key, newVal);
 	}
 	
 	onPaymentDelete(){
