@@ -18,8 +18,6 @@ export class MyFireService {
 	}
 
 	handleNewPayment(paymentData, uid){
-		// const uid = firebase.auth().currentUser.uid;
-		// const user = this.authService.getUser();
 		console.log('provider', uid);
 		const newPaymentKey = firebase.database().ref('payments').push().key;
 		const updates = {};
@@ -29,13 +27,13 @@ export class MyFireService {
 
 	handlePaymentChange(pid, key, val){
 		const user = this.authService.getUser();
-		const updateRef = '/payments/' + user.uid + '/' + pid;
+		const updateRef = '/payments/' + pid;
 		return firebase.database().ref(updateRef).update({key: val});
 	}
 
 	handlePaymentDelete(pid){
 		const user = this.authService.getUser();
-		const delRef = '/payments/' + user.uid + '/' + pid;
+		const delRef = '/payments/' + pid;
 		return firebase.database().ref(delRef).remove();
 	}
 }
