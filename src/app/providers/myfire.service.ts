@@ -17,11 +17,13 @@ export class MyFireService {
 		return firebase.database().ref('payments').orderByChild('uid').equalTo(uid);
 	}
 
-	handleNewPayment(paymentData){
-		const user = this.authService.getUser();
-		const newPaymentKey = firebase.database().ref('payments').child(user.uid).push().key;
+	handleNewPayment(paymentData, uid){
+		// const uid = firebase.auth().currentUser.uid;
+		// const user = this.authService.getUser();
+		console.log('provider', uid);
+		const newPaymentKey = firebase.database().ref('payments').push().key;
 		const updates = {};
-		updates['/payments/' + user.uid + '/' + newPaymentKey] = paymentData;
+		updates['/payments/' + newPaymentKey] = {...paymentData, uid};
 		return firebase.database().ref().update(updates);
 	}
 

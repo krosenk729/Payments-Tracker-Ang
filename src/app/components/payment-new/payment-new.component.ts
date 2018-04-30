@@ -10,11 +10,12 @@ import * as Moment from 'moment';
 })
 export class PaymentNewComponent implements OnInit {
 	newPaymentForm: FormGroup;
+	paymentsRef: any;
 	constructor(private formBuilder: FormBuilder, private myFire: MyFireService) { }
 
-	createForm() {
+	setForm() {
 		this.newPaymentForm = this.formBuilder.group({
-			name: ['', Validators.required],
+			name: ['My Monthly Subscription', Validators.required],
 			url: '',
 			cost: ['11', Validators.required],
 			freq: 'Monthly',
@@ -23,15 +24,19 @@ export class PaymentNewComponent implements OnInit {
 	}
 
 	onFormSubmit(){
-		// if(!this.newPaymentForm.errors){
-		// 	this.myFire.handleNewPayment( this.newPaymentForm.value );
-		// 	this.newPaymentForm.reset();
-		// }
+		if(this.newPaymentForm.status === "VALID"){
+			const uid = firebase.auth().currentUser.uid;
+			const paymentsRef = this.myFire.getUserPaymentRef(uid);
+			console.log(uid);
+			// this.paymentsRef()
+			this.myFire.handleNewPayment( this.newPaymentForm.value, uid );
+			this.setForm();
+		}
 		console.log( this.newPaymentForm );
 	}
 
 	ngOnInit() {
-		this.createForm();
+		this.setForm();
 	}
 
 }
