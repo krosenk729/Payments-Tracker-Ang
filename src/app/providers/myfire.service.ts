@@ -34,6 +34,7 @@ export class MyFireService {
 	handlePaymentDelete(pid){
 		const user = this.authService.getUser();
 		const delRef = '/payments/' + pid;
+		console.log('ran delete', pid);
 		return firebase.database().ref(delRef).remove();
 	}
 }

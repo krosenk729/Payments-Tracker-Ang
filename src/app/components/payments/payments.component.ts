@@ -15,12 +15,16 @@ export class PaymentsComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		const uid = firebase.auth().currentUser.uid;
 		this.paymentsRef = this.myFire.getUserPaymentRef(uid);
-		console.log(uid);
+		// console.log(uid);
 		this.paymentsRef.on('child_added', payment =>{
 			this.paymentList.push({
 				key: payment.key,
 				payment: payment.val()
 			});
+		});
+
+		this.paymentsRef.on('child_removed', deleted =>{
+			this.paymentList = this.paymentList.filter(payment=> payment.key !== deleted.key);
 		});
 	}
 

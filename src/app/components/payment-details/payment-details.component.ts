@@ -17,8 +17,7 @@ export class PaymentDetailsComponent implements OnInit {
 	ngOnInit() {
 		this.pid = this.payment.key;
 		this.paymentDetails = this.payment.payment;
-		console.log(this.payment);
-		console.log('payment details', Moment().format('MM-DD-YYYY') );
+		// console.log(this.payment);
 	}
 
 	onFreqChange(newVal){
