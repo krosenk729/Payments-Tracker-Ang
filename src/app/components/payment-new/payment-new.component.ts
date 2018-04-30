@@ -19,7 +19,7 @@ export class PaymentNewComponent implements OnInit {
 			url: '',
 			cost: ['11', Validators.required],
 			freq: 'Monthly',
-			startDate: [moment().format('YYYY-MM-DD'), Validators.required]
+			startDate: [Moment().format('YYYY-MM-DD'), Validators.required]
 		});
 	}
 

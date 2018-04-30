@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MyFireService } from '../../providers/myfire.service';
-// import * as Moment from 'moment';
+import * as Moment from 'moment';
 
 @Component({
 	selector: 'app-payment-details',
@@ -18,17 +18,20 @@ export class PaymentDetailsComponent implements OnInit {
 		this.pid = this.payment.key;
 		this.paymentDetails = this.payment.payment;
 		console.log(this.payment);
+		console.log('payment details', Moment().format('MM-DD-YYYY') );
 	}
 
 	onFreqChange(newVal){
+		console.log(newVal);
+		console.log(this.pid);
 	}
 
 	onPaymentChange(event, type){
-
+		console.log(event, type);
 	}
 	
 	onPaymentDelete(){
-
+		this.myFire.handlePaymentDelete(this.pid);
 	}
 
 	testUrl(str = '0'){
