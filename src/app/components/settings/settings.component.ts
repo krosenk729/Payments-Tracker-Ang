@@ -23,6 +23,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
 				payment: payment.val()
 			});
 		});
+		
+		this.paymentsRef.on('child_removed', deleted =>{
+			this.paymentList = this.paymentList.filter(payment=> payment.key !== deleted.key);
+		});
 	}
 
 	ngOnDestroy(){
