@@ -14,6 +14,7 @@ export class PaymentDetailsComponent implements OnInit, DoCheck {
 	
 	nextDate: string = Moment().format('MM/DD/YYYY');
 	momentConv: string = 'days';
+	remainDays: number = 0;
 
 	constructor(private myFire: MyFireService) { }
 
@@ -26,10 +27,16 @@ export class PaymentDetailsComponent implements OnInit, DoCheck {
 		if(this.paymentDetails.startDate){
 			this.momentConv = this.paymentDetails.freq.replace('ily', 'ys').replace('ly', 's').toLowerCase();
 			this.checkDate();
-		} 
+		}
 	}
 
 	checkDate(){
+		if( Moment().isSameOrBefore( this.paymentDetails.startDate ) ){
+			this.nextDate = Moment(this.paymentDetails.startDate).format('MM/DD/YYYY');
+		} else {
+			let delta = Moment().diff(this.paymentDetails.startDate, this.momentConv);
+			this.nextDate = Moment(this.paymentDetails.startDate).add(delta + 1, this.momentConv).format('MM/DD/YYYY');
+		}
 		console.log('checkdate', this.momentConv, Moment().format('mm:ss'), this.paymentDetails);
 	}
 
