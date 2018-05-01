@@ -22,6 +22,7 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
 import { PaymentNewComponent } from './components/payment-new/payment-new.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { GoogleCalendarComponent } from './components/dashboard-chart/google-calendar.component';
 import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
@@ -35,6 +36,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     PaymentDetailsComponent,
     PaymentNewComponent,
     SettingsComponent,
+    GoogleCalendarComponent,
     DashboardChartComponent,
     NavigationComponent
   ],

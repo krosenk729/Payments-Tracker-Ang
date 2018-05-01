@@ -2,26 +2,24 @@ import { Component, OnInit, DoCheck, Input } from '@angular/core';
 import { MyFireService } from '../../providers/myfire.service';
 import * as Moment from 'moment';
 
+interface PaymentDetail{
+	name: string,
+	uid: string,
+	cost: number,
+	freq: string,
+	startDate: string,
+	ampm?: string,
+	url?: string
+}
+
 @Component({
 	selector: 'app-payment-details',
 	templateUrl: './payment-details.component.html'
 })
-
-interface Payment{
-	uid: string,
-	name: string,
-	cost: number,
-	freq: string, 
-	startDate: string,
-	url?: string,
-	ampm?: string,
-	startTime?: number
-}
-
 export class PaymentDetailsComponent implements OnInit, DoCheck {
 	@Input() payment;
 	pid: string = null;
-	paymentDetails: Payment;
+	paymentDetails: PaymentDetail;
 	freqOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
 	
 	nextDate: string = Moment().format('MM/DD/YYYY');

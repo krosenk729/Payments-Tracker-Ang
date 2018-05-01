@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-declare var google:any;
+import { Component } from '@angular/core';
+import { GoogleCalendarComponent } from './google-calendar.component';
 
 @Component({
   selector: 'app-dashboard-chart',
-  templateUrl: './dashboard-chart.component.html',
+  template: '<div id="chart" style="width: 900px; height: 500px;"></div>',
   styleUrls: ['./dashboard-chart.component.css']
 })
-export class DashboardChartComponent implements OnInit {
- private static googleLoaded:any;
+export class DashboardChartComponent extends GoogleCalendarComponent {
+  private options;
+  private data;
+  private chart;
 
-  constructor(){
-      console.log("Here is GoogleChartComponent");
-  }
+  // constructor(){
+  //   console.log("Here is DashboardChartComponent");
+  // }
 
-  getGoogle() {
-      return google;
-  }
-
-  ngOnInit() {
+  drawGraph(){
+    console.log('Dash component draw...');
+    this.data = [];
   }
 
 }
