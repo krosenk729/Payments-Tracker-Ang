@@ -16,7 +16,7 @@
 	<div class="payment-detail payment-detail-c">
 		Starting <input type="date" [(ngModel)]="paymentDetails.startDate" (ngModelChange)="onPaymentChange($event, 'startDate')" [ngModelOptions]="{updateOn: 'blur'}">
 		Next is: {{nextDate}}! 
-		(11 days from now)
+		({{remainDays}} days from now)
 	</div>
 </div>
 <div style="font-size: x-small;">

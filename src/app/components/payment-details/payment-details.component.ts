@@ -11,7 +11,9 @@ export class PaymentDetailsComponent implements OnInit, DoCheck {
 	pid: string = null;
 	paymentDetails: any = {};
 	freqOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
-	nextDate: string = Moment().format('YYYY-MM-DD');
+	
+	nextDate: string = Moment().format('MM/DD/YYYY');
+	momentConv: string = 'days';
 
 	constructor(private myFire: MyFireService) { }
 
@@ -21,20 +23,14 @@ export class PaymentDetailsComponent implements OnInit, DoCheck {
 	}
 
 	ngDoCheck(){
-		this.checkDate();
+		if(this.paymentDetails.startDate){
+			this.momentConv = this.paymentDetails.freq.replace('ily', 'ys').replace('ly', 's').toLowerCase();
+			this.checkDate();
+		} 
 	}
 
 	checkDate(){
-		console.log('checkdate', Moment().format('mm:ss'), this.paymentDetails);
-
-		// if start in past, calculate next payment
-		// if start in future, let next payment equal future date
-		if( this.paymentDetails && Moment().isBefore(this.paymentDetails.startDate) ){
-			this.nextDate = Moment( this.paymentDetails.startDate ).format('MM/DD/YYYY');
-		} else {
-			const diff = Moment().diff( this.paymentDetails.startDate, this.paymentDetails.freq );
-			this.nextDate = Moment( this.paymentDetails.startDate ).add( diff, this.paymentDetails.freq ).format('MM/DD/YYYY');
-		}
+		console.log('checkdate', this.momentConv, Moment().format('mm:ss'), this.paymentDetails);
 	}
 
 	onFreqChange(newVal){

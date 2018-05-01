@@ -28,7 +28,7 @@ export class MyFireService {
 	handlePaymentChange(pid, key, val){
 		const user = this.authService.getUser();
 		const updateRef = '/payments/' + pid;
-		return firebase.database().ref(updateRef).update({key: val, updateDate: new Date()});
+		return firebase.database().ref(updateRef).update({[key]: val, updateDate: new Date()});
 	}
 
 	handlePaymentDelete(pid){
