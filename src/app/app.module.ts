@@ -32,7 +32,7 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
 import { PaymentNewComponent } from './components/payment-new/payment-new.component';
 import { SettingsComponent } from './components/settings/settings.component';
-import { DashboardBarchartComponent } from './components/dashboard-barchart/dashboard-barchart.component';
+import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
 import { NavigationComponent } from './components/common/navigation.component';
 
 
@@ -45,7 +45,7 @@ import { NavigationComponent } from './components/common/navigation.component';
     PaymentDetailsComponent,
     PaymentNewComponent,
     SettingsComponent,
-    DashboardBarchartComponent,
+    DashboardChartComponent,
     NavigationComponent
   ],
   imports: [
