@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { GoogleCalendarComponent } from './google-calendar.component';
 
 @Component({
@@ -6,18 +6,17 @@ import { GoogleCalendarComponent } from './google-calendar.component';
   template: '<div id="chart" style="width: 900px; height: 500px;"></div>',
   styleUrls: ['./dashboard-chart.component.css']
 })
-export class DashboardChartComponent extends GoogleCalendarComponent {
+export class DashboardChartComponent extends GoogleCalendarComponent implements OnChanges {
+  @Input() data;
   private options;
-  private data;
   private chart;
-
-  // constructor(){
-  //   console.log("Here is DashboardChartComponent");
-  // }
 
   drawGraph(){
     console.log('Dash component draw...');
-    this.data = [];
+  }
+
+  ngOnChanges(){
+    console.log(this.data ? this.data: "error");
   }
 
 }
