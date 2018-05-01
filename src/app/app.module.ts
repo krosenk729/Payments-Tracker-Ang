@@ -14,16 +14,6 @@ import { AuthGuard } from './providers/auth-guard.service';
 /* Firebase Env */
 import { environment } from './../environments/environment';
 
-// /* FusionCharts */
-// import * as FusionCharts from 'fusioncharts';
-// import * as Charts from 'fusioncharts/fusioncharts.charts';
-// import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
-// import { FusionChartsModule } from 'angular4-fusioncharts';
-// FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
-
-// /* External Libraries */
-// import * as Moment from 'moment';
-
 /* Components */
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -33,7 +23,7 @@ import { PaymentDetailsComponent } from './components/payment-details/payment-de
 import { PaymentNewComponent } from './components/payment-new/payment-new.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
-import { NavigationComponent } from './components/common/navigation.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 
 @NgModule({
