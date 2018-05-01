@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
 				key: payment.key,
 				payment: payment.val()
 			});
-			console.log('parent', this.paymentList);
 		});
 
 		this.paymentsRef.on('child_removed', deleted =>{
