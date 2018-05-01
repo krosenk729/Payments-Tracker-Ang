@@ -6,14 +6,26 @@ import * as Moment from 'moment';
 	selector: 'app-payment-details',
 	templateUrl: './payment-details.component.html'
 })
+
+interface Payment{
+	uid: string,
+	name: string,
+	cost: number,
+	freq: string, 
+	startDate: string,
+	url?: string,
+	ampm?: string,
+	startTime?: number
+}
+
 export class PaymentDetailsComponent implements OnInit, DoCheck {
 	@Input() payment;
 	pid: string = null;
-	paymentDetails: any = {};
+	paymentDetails: Payment;
 	freqOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly'];
 	
 	nextDate: string = Moment().format('MM/DD/YYYY');
-	momentConv: string = 'days';
+	momentConv: any = 'days';
 	remainDays: number = 0;
 
 	constructor(private myFire: MyFireService) { }
