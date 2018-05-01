@@ -37,6 +37,7 @@ export class PaymentDetailsComponent implements OnInit, DoCheck {
 			let delta = Moment().diff(this.paymentDetails.startDate, this.momentConv);
 			this.nextDate = Moment(this.paymentDetails.startDate).add(delta + 1, this.momentConv).format('MM/DD/YYYY');
 		}
+		this.remainDays =  - Moment().diff(this.nextDate, 'days');
 		console.log('checkdate', this.momentConv, Moment().format('mm:ss'), this.paymentDetails);
 	}
 
