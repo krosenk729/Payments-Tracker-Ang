@@ -3,6 +3,7 @@
 		Dashboard
 	</h1>
 	<div class="card">
-		<app-dashboard-chart [data]="paymentList"></app-dashboard-chart>
+		<app-dashboard-chart [data]="paymentList" [events]="paymentEventList"></app-dashboard-chart>
+		<app-dashboard-timeline [data]="paymentList" [events]="paymentEventList"></app-dashboard-timeline>
 	</div>
 </div>

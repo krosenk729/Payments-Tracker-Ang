@@ -1,4 +1,4 @@
-import {Component, AfterContentInit } from '@angular/core';
+import {Component, Input, AfterContentInit } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import { DataSet, Timeline } from 'vis';
 
@@ -8,6 +8,9 @@ import { DataSet, Timeline } from 'vis';
   styleUrls: ['./dashboard-timeline.component.css']
 })
 export class DashboardTimelineComponent implements AfterContentInit {
+  @Input() data;
+  @Input() events;
+
   constructor() { }
 
   // ngAfterContentInit rather than ngOnInit 
@@ -15,6 +18,22 @@ export class DashboardTimelineComponent implements AfterContentInit {
   // and allow other DOM related tasks to complete
   ngAfterContentInit(){
     // create an array with events
+    let x = 1;
+    let times = this.events
+    .reduce( (i, t) => [...i, ...t], [])
+    .map(event => {
+      let dataFormatted = {
+        id: x++,
+        content: `${event.name} - $${event.cost}`,
+        start: event.date
+      }
+
+      console.log(dataFormatted);
+
+      return dataFormatted;
+    });
+
+
     const items = new DataSet([
     {id: 1, content: 'item 1', start: '2013-04-20'},
     {id: 2, content: 'item 2', start: '2013-04-14'},
@@ -26,6 +45,9 @@ export class DashboardTimelineComponent implements AfterContentInit {
 
     const container = document.querySelector('.graph-container');
     const options = {};
+    console.log('timeline data', times);
+    console.log('events data', this.events);
+    console.log('events data', this.events.filter(i => i.length > 0).reduce((i,t)=> [...i, ...t]));
     const timeline = new Timeline(container, items, options);
   }
 
