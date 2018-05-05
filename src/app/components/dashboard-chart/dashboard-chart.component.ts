@@ -4,27 +4,26 @@ import * as Moment from 'moment';
 
 @Component({
   selector: 'app-dashboard-chart',
-  template: '<div id="chart" style="width: 900px; height: 500px;"></div>',
+  template: '<div id="chart" style="width: 500px; height: 400px;">{{dateArray[1]}}</div>',
   styleUrls: ['./dashboard-chart.component.css']
 })
 export class DashboardChartComponent extends GoogleCalendarComponent implements OnChanges {
   @Input() data;
-  private dateArray;
-  private options;
-  private chart;
+  dateArray;
+  options;
+  chart;
 
   drawGraph(){
     console.log('Dash component draw...');
   }
 
-  paymentsToDateArrays(){
+  paymentsToDateArrays(passed: any[]){
     // map payments into an array of arrays
     // each payment is transformed from
     // {name:..., cost:..., startDate:...}
     // to
     // [{cost:..., date:...}, {cost:..., date:...}, ...]
-
-    this.dateArray = this.data.map(data =>{
+    return passed.map(data =>{
       const payment = data.payment;
       const momentConv = payment.freq.replace('ily', 'ys').replace('ly', 's').toLowerCase();
       let numOccur = Math.max(0, Moment().endOf('year').diff(Moment(payment.startDate) , momentConv ));
@@ -42,6 +41,7 @@ export class DashboardChartComponent extends GoogleCalendarComponent implements 
 
   ngOnChanges(){
     console.log('child...', this.data ? this.data: "error");
+    this.dateArray = this.paymentsToDateArrays(this.data);
   }
 
 }

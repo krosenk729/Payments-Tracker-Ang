@@ -25,6 +25,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { GoogleCalendarComponent } from './components/dashboard-chart/google-calendar.component';
 import { DashboardChartComponent } from './components/dashboard-chart/dashboard-chart.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { DashboardTimelineComponent } from './components/dashboard-timeline/dashboard-timeline.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     SettingsComponent,
     GoogleCalendarComponent,
     DashboardChartComponent,
-    NavigationComponent
+    NavigationComponent,
+    DashboardTimelineComponent
   ],
   imports: [
     BrowserModule,
